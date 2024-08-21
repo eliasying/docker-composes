@@ -1,0 +1,17 @@
+version: "3.1"
+# 服务配置
+services:
+  kibana:
+    container_name: kibana
+    image: kibana:7.10.1
+    restart: always
+    environment:
+      - "TZ=Asia/Shanghai"
+      - "I18N_LOCALE=zh-CN"
+      - "ELASTICSEARCH_HOSTS=http://dev-tbu-next-erp-es.schoolpal.cn:9200"
+      - "ELASTICSEARCH_USERNAME=elastic"
+      - "ELASTICSEARCH_PASSWORD=E4v7ouLJepOKKKlY"
+    ports:
+      - "5601:5601"
+    volumes:
+    - ./config/kibana.yml:/usr/share/kibana/config/kibana.yml:rw
